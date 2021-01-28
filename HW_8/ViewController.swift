@@ -14,18 +14,26 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var sneakersImageView: UIImageView!
     
+    func correctCounter(_ counter: Int) {
+        if counter >= 0 {
+            sneakersImageView.image = UIImage(named: imageList[counter % 10])
+        }
+        else {
+            sneakersImageView.image = UIImage(named: imageList[-counter % 10])
+        }
+    }
+    
     
     @IBAction func backButton(_ sender: Any) {
         counter -= 1
-        sneakersImageView.image = UIImage(named: imageList[counter % 10])
+        correctCounter(counter)
     }
     
     
     @IBAction func nextButton(_ sender: Any) {
         counter += 1
-        sneakersImageView.image = UIImage(named: imageList[counter % 10])
+        correctCounter(counter)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
