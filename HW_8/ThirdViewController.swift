@@ -15,7 +15,7 @@ class ThirdViewController: UIViewController {
     
     @IBOutlet weak var purpleView: UIView!
     
-    var menuArray = ["First", "Second", "Third"]
+    var menuArray = ["Green", "Blue", "Purple"]
     var myFirstSegmentedControl = UISegmentedControl()
     
     @objc func selectedValue (target: UISegmentedControl) {
@@ -23,18 +23,18 @@ class ThirdViewController: UIViewController {
             let segmentedIndex = target.selectedSegmentIndex
             
             if segmentedIndex == 0 {
-                blueView.isHidden = false
-                greenView.isHidden = true
+                greenView.isHidden = false
+                blueView.isHidden = true
                 purpleView.isHidden = true
             }
             else if segmentedIndex == 1 {
-                blueView.isHidden = true
-                greenView.isHidden = false
+                greenView.isHidden = true
+                blueView.isHidden = false
                 purpleView.isHidden = true
             }
             else {
-                blueView.isHidden = true
                 greenView.isHidden = true
+                blueView.isHidden = true
                 purpleView.isHidden = false
             }
         }
@@ -43,13 +43,14 @@ class ThirdViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        greenView.isHidden = false
         blueView.isHidden = true
-        greenView.isHidden = true
         purpleView.isHidden = true
         
         // create SegmentedContoller
         myFirstSegmentedControl = UISegmentedControl(items: menuArray)
         myFirstSegmentedControl.frame = CGRect(x: 107, y: 100, width: 200, height: 32)
+        myFirstSegmentedControl.selectedSegmentIndex = 0
         view.addSubview(myFirstSegmentedControl)
         
         myFirstSegmentedControl.addTarget(self, action: #selector(selectedValue), for: .valueChanged)
